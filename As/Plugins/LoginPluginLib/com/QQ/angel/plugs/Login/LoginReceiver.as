@@ -39,7 +39,7 @@ package com.QQ.angel.plugs.Login
          {
             _view.setWaiting(false);
          }
-         fun(param1,param2);
+         fun(param1,param2);//dataHandle
       }
       
       public function sendData(param1:int, param2:int, param3:Object) : void
@@ -78,7 +78,7 @@ package com.QQ.angel.plugs.Login
       
       public function set handle(param1:Function) : void
       {
-         fun = param1;
+         fun = param1; //dataHandle
       }
    }
 }

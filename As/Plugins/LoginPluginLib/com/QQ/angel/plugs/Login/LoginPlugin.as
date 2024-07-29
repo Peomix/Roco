@@ -766,7 +766,7 @@ package com.QQ.angel.plugs.Login
             cgiLoader.addEventListener(Event.COMPLETE,loadDataComplete,false,1);
             cgiLoader.addEventListener(IOErrorEvent.IO_ERROR,onLoadError,false,1);
          }
-         myParam = param2;
+         myParam = param2;//		<ATTR name="CGI_ROOT" value="https://17roco.qq.com/cgi-bin/" />
          cgiLoader.load(new URLRequest(DEFINE.CGI_ROOT + param1 + "&unkown=" + (!!serverInfo.pskey ? serverInfo.pskey : serverInfo.skey) + "&skey=" + serverInfo.skey));
       }
       
