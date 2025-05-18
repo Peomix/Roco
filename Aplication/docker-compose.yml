@@ -1,8 +1,0 @@
-version: "3"  # docker-compose版本
-services:
-  app:  # docker-compose编排名称，一般同微服务名称，注意不要与其他服务重名
-    image: "python:3.12"  # docker镜像名及版本
-    volumes:  # 挂载目录
-      - C:\Users\wle\Desktop\Roco:/usr/src/app  
-    stdin_open: true
-    tty: true 
