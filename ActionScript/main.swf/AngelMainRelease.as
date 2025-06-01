@@ -197,6 +197,8 @@ package//文档类，加载swf自动实例化
          removeChild(loadingUI);
          loadingUI = null;
       }
+
+      
    }
 }
 
