@@ -32,10 +32,15 @@ package com.QQ.angel.install.config
       protected var _fail:Function;
       
       public function VerConfigLoader(param1:String = "", param2:String = "", param3:Function = null, param4:Function = null, param5:int = 1)
-      {
+      {//verConf = new VerConfigLoader("//res.17roco.qq.com/ver.config?fileVersion=" + Math.random(),"",loadGlobalConf,verConfLoadError,2);
          super();
          _stream = new URLStream();
-         init(param1,param2,param3,param4,param5);
+          _url = param1;
+         _name = param2;
+         _success = param3;//_success()
+         _fail = param4;
+         _tryTime = param5;
+         _hasTryTime = 0;
       }
       
       public function cancel() : void
@@ -80,15 +85,6 @@ package com.QQ.angel.install.config
          _byteArray = null;
       }
       
-      public function init(param1:String = "", param2:String = "", param3:Function = null, param4:Function = null, param5:int = 1) : void
-      {
-         _url = param1;
-         _name = param2;
-         _success = param3;
-         _fail = param4;
-         _tryTime = param5;
-         _hasTryTime = 0;
-      }
       
       private function completeHandler(param1:Event) : void
       {
@@ -111,9 +107,8 @@ package com.QQ.angel.install.config
       
       public function load() : void
       {
-         ++_hasTryTime;
-         removeEvent();
-         addEvent();
+         ++_hasTryTime;//1
+         addEvent();//重置监听
          _stream.load(new URLRequest(_url));
          trace("正在加载：" + _url);
       }
@@ -169,36 +164,14 @@ package com.QQ.angel.install.config
          return _url;
       }
       
-      private function removeEvent() : void
-      {
-         if(_stream)
-         {
-            _stream.removeEventListener(Event.COMPLETE,completeHandler);
-            _stream.removeEventListener(IOErrorEvent.IO_ERROR,ioErrorHandler);
-            _stream.removeEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErrorHandler);
-         }
-      }
       
-      protected function onError() : void
-      {
-         if(_hasTryTime >= _tryTime)
-         {
-            _fail && _fail.length == 1 && _fail(this);
-            _fail && _fail.length == 0 && _fail();
-         }
-         else
-         {
-            load();
-         }
-      }
+
       
       private function addEvent() : void
       {
          if(_stream)
          {
             _stream.addEventListener(Event.COMPLETE,completeHandler);
-            _stream.addEventListener(IOErrorEvent.IO_ERROR,ioErrorHandler);
-            _stream.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErrorHandler);
          }
       }
    }

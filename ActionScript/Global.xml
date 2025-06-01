@@ -1,0 +1,48 @@
+﻿<Global>
+	<version baseLine="2016-1-1 23:22:32" name="版本基线时间"/>
+	<BB src="https://res.17roco.qq.com/swf/bb.swf?60450" />
+		<Libs src="https://res.17roco.qq.com/libs/">
+		<Lib name="客户端类包" src="AngelClientLibs_s.swf?60450" step="0"/>
+		<Lib name="客户端协议包" src="AngelProtocal.swf?60450_1205" step="0"/>
+	</Libs>
+	<Installs/>
+	<DEFINE>
+
+	
+	<ATTR name="ANGEL_VERSION" value="A60452"/>
+	<ATTR name="HOMESTEAD_VER" value="H50340"/>
+	<ATTR name="TASK_VER" value="Task60220"/>
+		<ATTR name="COMM_ROOT" value="https://res.17roco.qq.com/" />
+		<ATTR name="TASK_RES_ROOT" value="https://res.17roco.qq.com/res/task2/" />
+		<ATTR name="MAGIC_RES_ROOT" value="https://res.17roco.qq.com/res/magic/" />
+		<ATTR name="SCENE_RES_ROOT" value="https://res.17roco.qq.com/res/scene/" />
+		<ATTR name="ITEM_RES_ROOT" value="https://res.17roco.qq.com/res/item/" />
+		<ATTR name="DAZZLE_DRESS_RES_ROOT" value="https://res.17roco.qq.com/res/avatar_new/" />
+		<ATTR name="DAZZLE_MOUNT_RES_ROOT" value="https://res.17roco.qq.com/res/avatar_new/20/" />
+		<ATTR name="AVATAR_PREV_ROOT" value="https://res.17roco.qq.com/res/avatar/" />
+		<ATTR name="NPC_RES_ROOT" value="https://res.17roco.qq.com/res/npc/" />
+		<!--旧AVATAR地址-->
+		<!--<ATTR name="AVATAR_ROOT" value="https://roco.store.qq.com/download?key={key}&amp;ver={ver}" />-->
+		<!--新AVATAR内网地址-->
+		<!-- <ATTR name="AVATAR_ROOT" value="https://roco-1234432101.sztest.file.tencent-cloud.com/avatar/{key}?key=0&amp;ver={ver}"/> -->
+		<!--新AVATAR外网地址-->
+		<ATTR name="AVATAR_ROOT" value="https://roco-40019.sh.gfp.tencent-cloud.com/avatar/{key}?key=0&amp;ver={ver}"/>
+		<ATTR name="CGI_ROOT" value="https://17roco.qq.com/cgi-bin/" />
+		<ATTR name="FASTCGI_ROOT" value="https://web2.17roco.qq.com/fcgi-bin/" />
+		<ATTR name="POLICYPORT" value="843" />
+		<ATTR name="TIMES_VERSION" value="Time60300"/>
+		<ATTR name="AVATAR_MIN_NUM" value="10"/>
+		<ATTR name="AVATAR_DELAY" value="2000"/>
+		<ATTR name="AVATAR_VERSION" value="Ava50460"/>
+		<ATTR name="FPS_LOG" value="uin=001;time=;scene="/>
+		<ATTR name="PROTOCOL_VERSION" value="https"/>
+	</DEFINE>
+	<ServerInfo>
+	<DirServer host="dir.17roco.qq.com" port="443" />
+	<CrossDomain host="" port="843"/>
+	<LogServer host="stat.17roco.qq.com" port="443"/>
+	</ServerInfo>
+	<Confs>
+	<Conf name="config" src="https://res.17roco.qq.com/conf/Angel.config?60450" compress="true">配置信息</Conf>
+	</Confs>
+</Global>

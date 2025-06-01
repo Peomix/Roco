@@ -1,4 +1,4 @@
-package
+package//文档类，加载swf自动实例化
 {
    import com.QQ.angel.install.config.AngelLibsLoader;
    import com.QQ.angel.install.config.GlobalConfig;
@@ -36,16 +36,7 @@ package
       public function AngelMainRelease()
       {
          super();
-         stage.stageFocusRect = false;
-         stage.tabChildren = false;
-         stage.align = "TL";
-         stage.scaleMode = "showAll";
-         checkDomain();
-         addBg();
          loadVerConf();
-         addChild(loadingUI = new InstallLoadingBar());
-         loadingUI.msg_txt.text = "努力加载中";
-         loadingUI.bar.stop();
          timeline = getTimer();
          var _loc1_:Object = stage.loaderInfo.parameters;
          if(_loc1_ == null)
@@ -56,13 +47,7 @@ package
          Security.allowDomain("*");
       }
       
-      private function addBg() : void
-      {
-         var _loc1_:Sprite = addChild(new SysDefaultBG()) as Sprite;
-         _loc1_.mouseEnabled = false;
-         _loc1_.cacheAsBitmap = true;
-      }
-      
+
       protected function onAllConfsLoaded(param1:Object) : void
       {
          var _loc2_:Object = null;
@@ -152,52 +137,12 @@ package
          verConf = new VerConfigLoader("//res.17roco.qq.com/ver.config?fileVersion=" + Math.random(),"",loadGlobalConf,verConfLoadError,2);
          verConf.load();
       }
-      
-      protected function verConfLoadError() : void
-      {
-         loadingUI.msg_txt.text = "版本号文件加载失败:请刷新页面重试!";
-      }
-      
-      protected function onConfLoadOk(param1:Event) : void
-      {
-         var _loc5_:Object = null;
-         IS_DEBUG = globalConf.IS_DEBUG;
-         Billboard.src = addFileVersion(globalConf.getBBSrc());
-         loadingUI.addChild(bb = new Billboard());
-         bb.x = 0;
-         bb.y = 0;
-         var _loc2_:QueueConfs = new QueueConfs();
-         var _loc3_:Array = globalConf.Confs;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_.length)
-         {
-            _loc5_ = _loc3_[_loc4_];
-            _loc2_.addConf(_loc5_.name,addFileVersion(_loc5_.src),_loc5_.compress);
-            _loc4_++;
-         }
-         _loc2_.start(onAllConfsLoaded,onConfsLoadError);
-      }
-      
-      private function checkDomain() : void
-      {
-         var _loc2_:Boolean = false;
-         var _loc1_:String = stage.loaderInfo.url.toLocaleLowerCase();
-         if(_loc1_.indexOf("//res.17roco.qq.com/main.swf") == -1)
-         {
-            _loc2_ = true;
-            if(_loc2_)
-            {
-               throw new Error("文件不能在域:" + _loc1_ + "中执行!!");
-            }
-         }
-      }
-      
+
       private function loadGlobalConf() : void
       {
          var _loc1_:String = null;
          globalConf = new GlobalConfig();
          globalConf.addEventListener(GlobalConfig.CONF_LOAD_OK,onConfLoadOk);
-         globalConf.addEventListener(GlobalConfig.CONF_LOAD_ERROR,onConfLoadError);
          if(stage.loaderInfo != null || stage.loaderInfo.parameters != null)
          {
             _loc1_ = stage.loaderInfo.parameters["config"];
@@ -210,11 +155,30 @@ package
          globalConf.loadConf(_loc1_);
       }
       
-      protected function onConfsLoadError(param1:String) : void
+      
+      protected function verConfLoadError() : void
       {
-         loadingUI.msg_txt.text = "错误:请刷新页面重试!";
-         log(2,2);
+         trace("版本号文件加载失败:请刷新页面重试!");
       }
+      
+      protected function onConfLoadOk(param1:Event) : void
+      {
+         var _loc5_:Object = null;
+         IS_DEBUG = globalConf.IS_DEBUG;
+         var _loc2_:QueueConfs = new QueueConfs();
+         var _loc3_:Array = globalConf.Confs;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_.length)
+         {
+            _loc5_ = _loc3_[_loc4_];
+            _loc2_.addConf(_loc5_.name,addFileVersion(_loc5_.src),_loc5_.compress);
+            _loc4_++;
+         }
+         _loc2_.start(onAllConfsLoaded,onConfsLoadError);
+      }
+      
+
+
       
       protected function onLibsLoaded() : void
       {

@@ -32,8 +32,6 @@ package com.QQ.angel.install.config
          {
             urlLoader = new URLLoader();
             urlLoader.addEventListener(Event.COMPLETE,onConfStatesHandler);
-            urlLoader.addEventListener(IOErrorEvent.IO_ERROR,onConfStatesHandler);
-            urlLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,onConfStatesHandler);
          }
       }
       
@@ -52,9 +50,6 @@ package com.QQ.angel.install.config
                return;
             }
          }
-         var _loc2_:ErrorEvent = new ErrorEvent(CONF_LOAD_ERROR);
-         _loc2_.text = "配置文件加载失败!请刷新页面重试!";
-         dispatchEvent(_loc2_);
       }
       
       public function get LogServer() : Object
