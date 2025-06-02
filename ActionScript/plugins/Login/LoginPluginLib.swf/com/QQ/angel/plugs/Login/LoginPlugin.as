@@ -422,7 +422,7 @@ package com.QQ.angel.plugs.Login
       public function call(param1:Object) : *
       {
          trace("LoginPlugin Debug version get call args = " + param1);
-         system.getUISysAPI().getPlugContainer().addChild(this);
+         system.getUISysAPI().getPlugContainer().addChild(this);//IUISysAPI  AngelMainAppBase
       }
       
       protected function listenerTcpConn(param1:ITCPProxy, param2:Boolean = true) : void

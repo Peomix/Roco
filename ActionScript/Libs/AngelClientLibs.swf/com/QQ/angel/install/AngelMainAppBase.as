@@ -199,7 +199,7 @@ package com.QQ.angel.install
                {
                   NetProtocalCenter.initClassArray(_loc4_["PROTOCAL_ARRAY"]);
                }
-               DataInfoCenter.getInstance().init(DataInfoType.DATAINFO_TYPE_MAX,null);
+               DataInfoCenter.getInstance().init(DataInfoType.DATAINFO_TYPE_MAX,null);// public static const DATAINFO_TYPE_MAX:int = 6;
                DataInfoCenter.getInstance().registerAdapterArray(DATAINFO.DATAINFO_ARRAY);
             }
          }
@@ -302,7 +302,11 @@ package com.QQ.angel.install
       }
       
       public function initialize(... rest) : void
-      {
+      
+      {// angelMainApp = new (getDefinitionByName("com.QQ.angel.AngelMainApp") as Class)();
+         //var _loc2_:Function = SocketLogger.getInstance().log;
+         //var _loc3_:Function = SocketLogger.getInstance().logClient;
+         //angelMainApp.initialize(this,globalConf,libsLoader,_loc2_,_loc3_);
          var _loc2_:Sprite = rest[0] as Sprite;
          if(Boolean(_loc2_) && Boolean(_loc2_.stage))
          {
