@@ -182,7 +182,9 @@ package//文档类，加载swf自动实例化
       protected function onLibsLoaded() : void
       {
          var _loc1_:Class = getDefinitionByName("com.QQ.angel.api.net.DEFINE") as Class;
-         _loc1_ && _loc1_["setVersionXML"](verConf.xml);
+         if(_loc1_){
+            _loc1_.setAllConfs(verConf.xml)
+         }
          angelMainApp = new (getDefinitionByName("com.QQ.angel.AngelMainApp") as Class)();
          var _loc2_:Function = SocketLogger.getInstance().log;
          var _loc3_:Function = SocketLogger.getInstance().logClient;
