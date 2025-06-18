@@ -1,4 +1,4 @@
-FROM node:18-slim
-RUN mkdir -p /app  
+FROM python:3.12-alpine
 WORKDIR /app
 COPY . .
+CMD [ "tail", "f" ,"/dev/null"]
